@@ -1,5 +1,6 @@
 import React from 'react'
 import "./signup.css"
+import { NavLink } from 'react-router-dom'
 
 const Sign_in = () => {
   return (
@@ -27,9 +28,9 @@ const Sign_in = () => {
 
         </div>
         <div className='create_accountinfo'>
-            
+
             <p>New To Amazon</p>
-            <button>Create Your amazon account</button>
+            <NavLink to ='/register'><button>Create Your amazon account</button></NavLink>
 
         </div>
 

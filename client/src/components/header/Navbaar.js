@@ -4,13 +4,14 @@ import SearchIcon from '@mui/icons-material/Search';
 import ShoppingCartSharpIcon from '@mui/icons-material/ShoppingCartSharp';
 import Avatar from '@mui/material/Avatar';
 import Badge from '@mui/material/Badge';
+import {NavLink} from "react-router-dom"
 const navbaar = () => {
   return (
     <header>
       <nav>
         <div className='left'>
           <div className='navlogo'>
-           <img src="./logo.jpg" alt="logo" />
+            <NavLink to ='/'> <img src="./amz_dark_logo.png" alt="logo" /> </NavLink> 
           </div>
           <div className='nav_searchbaar' >
             <input type='text' name='' id='' />
@@ -21,7 +22,7 @@ const navbaar = () => {
         </div>
         <div className='right'>
           <div className='nav_btn'>
-            <a href=''>Signin</a>
+            <NavLink to='/login'>Signin</NavLink>
           </div>
           <div className='cart_btn'>
            <Badge badgeContent={4} color="primary">
