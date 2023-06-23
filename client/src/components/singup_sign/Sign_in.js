@@ -2,9 +2,11 @@ import React from 'react'
 import "./signup.css"
 import { NavLink } from 'react-router-dom'
 
+
+
 const Sign_in = () => {
   return (
-   <>
+   <> 
    <section>
     <div className='sign_container'>
         <div className='sign_header'>
