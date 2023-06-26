@@ -1,10 +1,29 @@
-import React from 'react'
 import "./signup.css"
 import { NavLink } from 'react-router-dom'
-
+import React, { useState } from 'react'
 
 
 const Sign_in = () => {
+
+
+
+    const [logdata,setData] = useState({
+        email:"",
+        password: "",
+    }); // use state is a hookp
+
+    console.log(logdata)
+    const adddata = (e)=>{
+        const {name,value} = e.target;
+
+        setData(()=>{
+            return{
+                ...logdata,
+                [name]:value
+            }
+        })
+    }
+   
   return (
    <> 
    <section>
@@ -18,11 +37,18 @@ const Sign_in = () => {
                 <h1>Sign-In</h1>
                 <div className='form_data'>
                     <label htmlFor='email'> Email</label>
-                    <input type='text' name='email' id='emial'/>
+                    <input type='text' 
+                    onChange ={adddata}
+                    value={logdata.email}
+
+                    name='email' id='emial'/>
                 </div>
                 <div>
                     <label htmlFor='password'>Password</label>
-                    <input type='password' name='password' id='password'/>
+                    <input type='password' 
+                    onChange={adddata}
+                    value={logdata.password}
+                    name='password' id='password'/>
                 </div>
 
                 <button className='signin_btn'>Continue</button>

@@ -1,8 +1,30 @@
-import React from 'react'
 import "./signup.css"
 import {NavLink} from 'react-router-dom'
+import React, { useState } from 'react'
 
 const SignUp = () => {
+
+    const [udata, setUdata] = useState({
+        fname: "",
+        email: "",
+        mobile: "",
+        password: "",
+        cpassword: ""
+    });
+
+    // console.log(udata);
+
+    console.log(udata);
+    const adddata = (e)=>{
+        const {name,value} = e.target;
+
+        setUdata (()=>{
+            return{
+                ...udata,
+                [name]:value
+            }
+        })
+    }
   return (
     <div>
         <section>
@@ -16,24 +38,40 @@ const SignUp = () => {
                 <h1>Create Account</h1>
                 <div className='form_data'>
                     <label htmlFor='fname'>Your name </label>
-                    <input type='text' name='name' id='name'/>
+                    <input type='text' 
+                    //onChange={(e)=>setUdata({...udata,fname:e.target.value})}
+                    onChange={adddata}
+                    value={udata.fname}
+                    name='fname' id='name'/>
                 </div>
                 <div className='form_data'>
                     <label htmlFor='number'> Mobile number</label>
-                    <input type='text' name='mobile' id='mobile'/>
+                    <input type='text'
+                    onChange={adddata}
+                    value={udata.mobile}
+                    name='mobile' id='mobile'/>
                 </div>
                 <div className='form_data'>
                     <label htmlFor='email'>Email (optional) </label>
-                    <input type='text' name='email' id='email'/>
+                    <input type='text'
+                    onChange={adddata}
+                    value={udata.email}
+                     name='email' id='email'/>
                 </div>
                 <div className='form_data'>
                     <label htmlFor='password'>Password</label>
-                    <input type='password' name='password' id='password' placeholder='At least 6 char'
+                    <input type='password' 
+                    onChange={adddata}
+                    value={udata.password}
+                    name='password' id='password' placeholder='At least 6 char'
                     />
                 </div>
                 <div className='form_data'>
                     <label htmlFor='password'>Password Again</label>
-                    <input type='password' name='password' id='password'/>
+                    <input type='password'
+                    onChange={adddata}
+                    value={udata.cpassword}
+                    name='cpassword' id='password'/>
                 </div>
 
 
