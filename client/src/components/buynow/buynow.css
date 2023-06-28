@@ -134,7 +134,8 @@
     color: #007185;
     font-size: 12px;
     font-weight: 500;
-    margin-top: 20px;
+    margin-top:20px;
+    margin-bottom: -10px;
 }
 
 .buynow_container .right_buy .cost_right h3{
