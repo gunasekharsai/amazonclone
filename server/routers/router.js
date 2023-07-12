@@ -1,6 +1,7 @@
 const express = require("express");
 const router = new express.Router();
 const Products = require("../models/productSchema");
+const USER =require("../models/userSchema");
 
 // api calling to get data from backend
 //get product api
@@ -24,12 +25,51 @@ router.get("/getproductsone/:id",async(req,res)=>{
 
         const individuadata = await Products.findOne({id:id});
 
-        console.log(individuadata)
+        // console.log(individuadata)
         res.status(201).json(individuadata);
     } catch (error) {
         res.status(400).json(individuadata);
         console.log("error"+error.message);
 
+    }
+});
+
+
+// register data 
+
+router.post("/register",async(req,res)=>{
+    // console.log(req.body);
+
+    const {fname,email,mobile,password,cpassword} = req.body;
+    if(!fname || !email || !mobile ||!password || !cpassword){
+        res.status(422).json({error:"fill the all data "});
+
+        console.log("no data available");
+    };
+
+    try {
+        const preuser =  await USER.findOne({email: email});
+        if(preuser){
+            res.status(422).json({error:"this user is already present"})
+        }else if(password!==cpassword){
+            res.status(422).json({error:"password and cpassword are not matching"})
+        } else{
+            const finalUser = new USER({
+                fname,email,mobile,password,cpassword
+            });
+
+            // guna ->encrypt jdcbdb ->> decrypt -> guna
+
+            // bcryptjs
+            // password hashing process will takes place between the final user step and saving into data base
+
+            const storedata = await finalUser.save();
+            console.log(storedata);
+
+            res.status(201).json(storedata);
+        }
+    } catch (error) {
+        
     }
 })
 
